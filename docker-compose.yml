@@ -4,8 +4,9 @@ services:
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
+    container_name: SPE_Speech_Evaluator
     volumes:
-      - .:/code
+      - .:/SPE_Speech_Evaluator
     ports:
       - "8000:8000"
 

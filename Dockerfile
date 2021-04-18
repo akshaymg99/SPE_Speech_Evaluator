@@ -1,6 +1,6 @@
 FROM python:3.6
 
-ENV DockerHOME=/home/akshay/Desktop/IIITB/SPE_Speech_Evaluator
+ENV DockerHOME=/SPE_Speech_Evaluator
 
 RUN mkdir -p $DockerHOME
 
