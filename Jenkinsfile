@@ -14,6 +14,15 @@ pipeline{
             steps{
                 sh "docker build . -t akshaymg99/speechspe:latest "
             }
+        }
+	stage('DockerHub Push'){
+            steps{
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
+                    sh "docker login -u akshaymg99 -p ${dockerHubPwd}"
+                }
+                sh "docker push akshaymg99/speech-spe:latest "
+            }
+            
         }   
 
             
