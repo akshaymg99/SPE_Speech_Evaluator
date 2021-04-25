@@ -12,7 +12,7 @@ pipeline{
  
 	stage('Docker Build'){
             steps{
-                sh "docker build . -t akshaymg99/speechspe:latest "
+                sh "docker build . -t akshaymg99/speech-spe:latest "
             }
         }
 	stage('DockerHub Push'){
