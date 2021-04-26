@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome Page</title>
+    <title>Recording Page</title>
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href={% static "dist/css/style.css" %} >
 	<script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 </head>
+
 <body class="is-boxed has-animations">
     <div class="body-wrap">
         <header class="site-header">
@@ -30,13 +31,12 @@
         <main>
             <section class="hero">
                 <div class="container">
+                    <h4 class="hero-cta">Speak the answer to the questions below <br> (time frame of 3 minutes)</h4>
                     <div class="hero-inner">
 						<div class="hero-copy">
-	                        <h1 class="hero-title mt-0">Spoken English Evaluator for Interview</h1>
-	                        <p class="hero-paragraph">Analyzes English speech by converting it to text</p>
+                            <h5 class="hero-cta">Q) Introduce yourself</h5><br>
 	                        <div class="hero-cta">
-                                <a class="button button-primary" onclick="location.href='{% url 'record' %}'">Start Interview</a>
-                                <a class="button" href="#">How it Works?</a>
+                                <a class="button button-primary" onclick="location.href='{% url 'record' %}'">Start recording</a>
                             </div>
 						</div>
 						<div class="hero-figure anime-element">
@@ -57,52 +57,6 @@
                     </div>
                 </div>
             </section>
-
-            <section class="features section">
-                <div class="container">
-					<div class="features-inner section-inner has-bottom-divider">
-                        <div class="features-wrap">
-                            <div class="feature text-center is-revealing">
-                                <div class="feature-inner">
-                                    <div class="feature-icon">
-										<img src={% static "dist/images/feature-icon-01.svg" %} alt="Feature 01">
-                                    </div>
-                                    <h4 class="feature-title mt-24">Speech to Text</h4>
-                                    <p class="text-sm mb-0">Converts audio input to text for further processing</p>
-                                </div>
-                            </div>
-							<div class="feature text-center is-revealing">
-                                <div class="feature-inner">
-                                    <div class="feature-icon">
-										<img src={% static "dist/images/feature-icon-02.svg" %} alt="Feature 02">
-                                    </div>
-                                    <h4 class="feature-title mt-24">Vocabulary Strength</h4>
-                                    <p class="text-sm mb-0">Checks for how strong and unique words the response answeer contains. Ranks the words according to global word-usage frequencies</p>
-                                </div>
-                            </div>
-                            <div class="feature text-center is-revealing">
-                                <div class="feature-inner">
-                                    <div class="feature-icon">
-										<img src={% static "dist/images/feature-icon-03.svg" %} alt="Feature 03">
-                                    </div>
-                                    <h4 class="feature-title mt-24">Analyzes Grammatical Syntax</h4>
-                                    <p class="text-sm mb-0">Uses BERT Transformer model to analyze syntax in user's sentences</p>
-                                </div>
-                            </div>
-                            <div class="feature text-center is-revealing">
-                                <div class="feature-inner">
-                                    <div class="feature-icon">
-										<img src={% static "dist/images/feature-icon-04.svg" %} alt="Feature 04">
-                                    </div>
-                                    <h4 class="feature-title mt-24">Feedback Report</h4>
-                                    <p class="text-sm mb-0">Generates Feedback scores report based on the above tests</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
         </main>
 
         <footer class="site-footer">
