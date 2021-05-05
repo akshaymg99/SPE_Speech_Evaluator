@@ -5,7 +5,9 @@ pipeline{
 
 	stage('Pre-SCM'){
 		steps{
-		    git lfs install
+			script{
+			   git lfs install
+			}
 		}
 	} 
 
