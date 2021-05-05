@@ -31,12 +31,16 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'speech.apps.SpeechConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'speech.dependencies',
+    'speech.Analyzer',
+
 ]
 
 MIDDLEWARE = [
@@ -124,6 +128,11 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+SCRIPT_DIR = os.path.join(BASE_DIR, 'speech')
+DEPENDENCIES_DICT_DIR = os.path.join(BASE_DIR, 'speech/dependencies/dict_10k.txt')
+Q1_CSV = os.path.join(BASE_DIR, 'speech/dependencies/intro_Q1.csv')
+BERT_MODEL = os.path.join(BASE_DIR, 'speech/dependencies/bert-based-uncased-GED.pth')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

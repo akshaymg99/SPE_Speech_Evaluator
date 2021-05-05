@@ -10,6 +10,19 @@
     <link rel="stylesheet" href={% static "dist/css/style.css" %} >
 	<script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <style>
+        button{
+              background-color:yellow;
+            }
+        button:hover{background-color:orange;}
+        button:focus{background-color:red;}
+
+        p {
+          display: inline;
+          font-size: 40px;
+          margin-top: 0px;
+        }
+    </style>
 </head>
 
 <body class="is-boxed has-animations">
@@ -35,9 +48,45 @@
                     <div class="hero-inner">
 						<div class="hero-copy">
                             <h5 class="hero-cta">Q) Introduce yourself</h5><br>
-	                        <div class="hero-cta">
-                                <a class="button button-primary" onclick="location.href='{% url 'record' %}'">Start recording</a>
-                            </div>
+
+                            <form method="post">
+                                {% csrf_token %}
+                                <input onclick="startTimer()" type="submit" value="Start Recording" name="run_analyzer" id="mybtn" />
+                                <!--
+                                <button id="mybtn" value="Start Recording" type="submit" name="run_analyzer" onclick="startTimer()"></button>
+                                -->
+                            </form>
+
+                            <br>
+                            <p id="mins"></p>
+                            <p id="secs"></p>
+                            <h4 id="end"></h4>
+                            <br><br>
+
+                            <script>
+                                function startTimer() {
+                                    document.getElementById("mybtn").value="Recording..";
+                                    var timeleft = 60000;
+                                    var setTimer = setInterval(function() {
+
+                                        var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+                                        var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+                                        document.getElementById("mins").innerHTML = minutes + "m "
+                                        document.getElementById("secs").innerHTML = seconds + "s "
+
+                                        if (timeleft < 0) {
+                                            clearInterval(setTimer);
+                                            document.getElementById("mins").innerHTML = ""
+                                            document.getElementById("secs").innerHTML = ""
+                                            document.getElementById("end").innerHTML = "TIME UP!!";
+                                        }
+                                        timeleft = timeleft - 1000;
+                                    }, 1000);
+                                }
+
+                            </script>
+
 						</div>
 						<div class="hero-figure anime-element">
 							<svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
