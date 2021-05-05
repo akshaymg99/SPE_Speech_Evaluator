@@ -3,6 +3,13 @@ pipeline{
     
     stages{
 
+	stage('Pre-SCM'){
+		steps{
+		    git lfs install
+		}
+	} 
+
+	
         stage('SCM'){
             steps{
                 git credentialsId: 'github', 
