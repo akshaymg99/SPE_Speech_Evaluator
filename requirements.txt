@@ -1,2 +1,9 @@
 Django==3.2
 uwsgi>=2.0
+pandas==0.24.2
+pydub==0.25.1
+numpy==1.16.2
+Keras==2.3.1
+SpeechRecognition==3.7.1
+torch==1.1.0
+pytorch_pretrained_bert==0.6.2
