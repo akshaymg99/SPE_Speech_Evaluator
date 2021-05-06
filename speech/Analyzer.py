@@ -1,15 +1,13 @@
 # !/usr/bin/venv python
+# -*- coding: utf-8 -*-
 
 import speech_recognition as sr
 from keras.preprocessing.sequence import pad_sequences
 from pytorch_pretrained_bert import BertTokenizer
 from pytorch_pretrained_bert import BertForSequenceClassification
-from pydub import AudioSegment
-from pydub.silence import split_on_silence
 import numpy as np
 import pandas as pd
 import gc
-import os
 import torch
 import time
 
