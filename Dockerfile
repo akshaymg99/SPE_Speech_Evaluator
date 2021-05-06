@@ -1,22 +1,40 @@
-FROM python:3.6
+FROM ubuntu:18.04
 
-ENV DockerHOME=/SPE_Speech_Evaluator
+RUN apt-get update && apt-get install -y \
+    python3.6 \
+    python3-pip
 
-RUN mkdir -p $DockerHOME
+RUN mkdir /SPE_Speech_Evaluator 
 
-WORKDIR $DockerHOME
+WORKDIR /SPE_Speech_Evaluator
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+COPY . /SPE_Speech_Evaluator
 
-RUN pip install --upgrade pip
+CMD export LANG=C.UTF-8
 
-COPY . $DockerHOME 
+RUN echo $LANG
 
-RUN pip install -r requirements.txt
+RUN python3 -c 'import locale; print(locale.getpreferredencoding())'
+
+RUN apt-get update \
+        && apt-get install -y pulseaudio alsa-utils alsa-base ffmpeg 
+
+RUN apt-get update \
+        && apt-get install libportaudio2 libportaudiocpp0 portaudio19-dev libsndfile1-dev -y \
+        && pip3 install pyaudio
+
+RUN apt-get install -y pulseaudio
+
+CMD python3 -c "import pyaudio"
+
+COPY requirements.txt /SPE_Speech_Evaluator
+
+RUN pip3 install -r requirements.txt
+
+COPY . /SPE_Speech_Evaluator
 
 EXPOSE 8000
 
-CMD python manage.py runserver 0.0.0.0:8000
+CMD python3 manage.py runserver 0.0.0.0:8000
 
 
