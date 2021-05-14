@@ -439,3 +439,4 @@ RuntimeError: The size of tensor a (12) must match the size of tensor b (0) at n
 2021-05-14 20:54:42 [INFO    ] (modeling.<module>) Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex .
 2021-05-14 21:11:06 [INFO    ] (modeling.<module>) Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex .
 2021-05-14 21:13:30 [INFO    ] (modeling.<module>) Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex .
+2021-05-14 21:15:55 [INFO    ] (modeling.<module>) Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex .
