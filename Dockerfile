@@ -10,10 +10,11 @@ WORKDIR /SPE_Speech_Evaluator
 
 COPY . /SPE_Speech_Evaluator
 
-CMD export LANG=C.UTF-8
+RUN apt-get -y install locales
+RUN touch /usr/share/locale/locale.alias
+ENV LANG=en_US.UTF-8 \ LANGUAGE=en_US \ LC_ALL=en_US.UTF-8
 
 RUN echo $LANG
-
 RUN python3 -c 'import locale; print(locale.getpreferredencoding())'
 
 RUN apt-get update \
