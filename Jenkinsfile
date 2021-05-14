@@ -3,12 +3,19 @@ pipeline{
     
     stages{
 
-        stage('SCM'){
+        stage('SCM git pull'){
             steps{
                 git credentialsId: 'github', 
                 url: 'https://github.com/akshaymg99/SPE_Speech_Evaluator.git'
             }
         } 
+
+	stage('Testing') {
+	    steps{
+		sh 'python3 manage.py test speech'		
+	
+	    }
+	}
  
 	stage('Docker Build'){
             steps{
