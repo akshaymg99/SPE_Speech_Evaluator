@@ -10,19 +10,19 @@ pipeline{
             }
         } 
 
-	stage('Testing') {
-	    steps{
-		sh 'pip3 install Django==3.2'
-		sh 'python3 manage.py test'		
-	
-	    }
-	}
- 
 	stage('Docker Build'){
             steps{
                 sh "docker build . -t akshaymg99/speech-spe:latest "
             }
         }
+
+	stage('Testing') {
+	    steps{
+		sh 'python3 manage.py test speech'		
+	
+	    }
+	}
+
 	stage('DockerHub Push'){
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
