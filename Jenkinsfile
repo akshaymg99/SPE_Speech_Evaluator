@@ -18,7 +18,7 @@ pipeline{
 
 	stage('Testing') {
 	    steps{
-		sh 'python3 manage.py test speech'		
+		sh 'python3 manage.py test'		
 	
 	    }
 	}
