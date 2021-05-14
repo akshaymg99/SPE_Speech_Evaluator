@@ -12,8 +12,7 @@ pipeline{
 
 	stage('Testing') {
 	    steps{
-		sh 'pip3 install Django==3.2'
-		sh 'pip3 install python3'
+		sh 'pip3 install Django==3.2',
 		sh 'python3 manage.py test speech'		
 	
 	    }
