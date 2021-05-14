@@ -15,6 +15,12 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+ELASTICSEARCH_DSL={
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -56,9 +62,6 @@ LOGGING = {
 }
 
 
-
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -74,6 +77,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_elasticsearch_dsl',
     'speech.apps.SpeechConfig',
     'django.contrib.admin',
     'django.contrib.auth',
