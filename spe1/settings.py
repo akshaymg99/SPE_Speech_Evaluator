@@ -77,7 +77,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'django_elasticsearch_dsl',
     'speech.apps.SpeechConfig',
     'django.contrib.admin',
     'django.contrib.auth',

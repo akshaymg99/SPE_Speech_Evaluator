@@ -30,9 +30,6 @@ CMD python3 -c "import pyaudio"
 
 COPY requirements.txt /SPE_Speech_Evaluator
 
-RUN pip3 install django-elasticsearch-dsl
-RUN pip3 install python-logstash
-
 RUN pip3 install -r requirements.txt
 
 COPY . /SPE_Speech_Evaluator

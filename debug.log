@@ -436,3 +436,4 @@ RuntimeError: The size of tensor a (12) must match the size of tensor b (0) at n
 2021-05-14 19:04:53 [WARNING ] (basehttp.log_message) "GET /favicon.ico HTTP/1.1" 404 2490
 2021-05-14 19:04:55 [INFO    ] (basehttp.log_message) "GET /record HTTP/1.1" 200 7589
 2021-05-14 19:04:55 [INFO    ] (basehttp.log_message) "GET /record HTTP/1.1" 200 7589
+2021-05-14 20:54:42 [INFO    ] (modeling.<module>) Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex .
