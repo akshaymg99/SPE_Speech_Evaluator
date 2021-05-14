@@ -1,12 +1,17 @@
 import inspect
 import os
 import sys
+import logging
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render
-
 from speech.Analyzer import analyze
+
+## creating logging instance
+logger = logging.getLogger(__name__)
+
+
 
 def index(request):
     return render(request, 'index.html')
@@ -14,7 +19,12 @@ def index(request):
 def record(request):
     if request.method == 'POST' and 'run_analyzer' in request.POST:
         res = analyze()
-        print(res)
+
+        if res is None:
+            logger.error("Didnt receive result analysis")
+        else:
+            logger.error("Analysis successful")
+
         table_1_answers = []
         table_1_sentences = []
         for each in res[0]:
