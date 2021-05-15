@@ -1,5 +1,10 @@
 pipeline{
-    agent any
+    agent {
+	docker {
+	     image 'akshaymg99/speech-spe:latest'
+	     args '-v $HOME:/SPE_Speech_Evaluator'
+	  }
+    }
     
     stages{
 
@@ -18,16 +23,11 @@ pipeline{
 	
 	stage('Testing') {
 	    steps{
+                sh 'cd /SPE_Speech_Evaluator'
 		sh 'ls -l'
 		sh 'pwd'
 		sh 'python3 manage.py test'		
 	    }
-
-	    agent {
-	       docker {
-	         image 'akshaymg99/speech-spe:latest'
-	         }
-	      }
 	}
 
 	stage('DockerHub Push'){
