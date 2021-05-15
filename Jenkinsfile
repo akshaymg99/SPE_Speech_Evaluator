@@ -22,10 +22,12 @@ pipeline{
             }
 	    steps{
 		sh 'pwd'
-                sh 'cd /SPE_Speech_Evaluator'
-		sh 'ls -l'
-		sh 'pwd'
-		sh 'python3 manage.py test'		
+		dir("/SPE_Speech_Evaluator") {
+			sh "ls -l"
+			sh "pwd"
+			sh "python3 manage.py test"
+		}
+				
 	    }
 	}
 
