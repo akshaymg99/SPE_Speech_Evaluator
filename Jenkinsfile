@@ -15,12 +15,18 @@ pipeline{
                 sh "docker build . -t akshaymg99/speech-spe:latest "
             }
         }
-
+	
 	stage('Testing') {
 	    steps{
+		sh 'ls -l'
 		sh 'python3 manage.py test'		
-	
 	    }
+
+	    agent {
+	       docker {
+	         image 'akshaymg99/speech-spe:latest'
+	         }
+	      }
 	}
 
 	stage('DockerHub Push'){
