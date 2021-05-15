@@ -1,0 +1,34 @@
+RUN apt-get install -y pulseaudio
+RUN apt-get install -y alsa-utils
+
+RUN usermod -a -G audio akshay
+
+RUN pip install --upgrade pip
+
+
+docker run -p 8000:8000 --device /dev/snd:/dev/snd akshaymg99/speech-spe:working4 
+
+docker run -it -v /tmp/.X11-unix:/tmp/.X11-unix --device /dev/snd -p 8000:8000 akshaymg99/speech-spe:working4
+
+docker run -it -v /tmp/.X11-unix:/tmp/.X11-unix --device /dev/sda:/dev/sda -p 8000:8000 akshaymg99/speech-spe:working4
+
+docker run -d --device /dev/snd -p 8000:8000 akshaymg99/speech-spe:working4
+
+docker run -it -v /tmp/.X11-unix:/tmp/.X11-unix --device /dev/snd -e PULSE_SERVER=pulseaudio -p 8000:8000 akshaymg99/speech-spe:working4
+
+docker run -it --device /dev/snd -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native -v ~/.config/pulse/cookie:/root/.config/pulse/cookie -p 8000:8000 akshaymg99/speech-spe:working4
+
+docker run -it --device /dev/snd -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native -v ~/.config/pulse/cookie:/root/.config/pulse/cookie --group-add $(getent group audio | cut -d: -f3) -v /media/dyan/project/projects/voice/:/data/voice/ -p 8000:8000 akshaymg99/speech-spe:working4
+
+docker run -it -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native -v ~/.config/pulse/cookie:/root/.config/pulse/cookie -p 8000:8000 akshaymg99/speech-spe:working4
+
+aplay -L | head -n9
+
+
+
+
+docker run -i -t akshaymg99/speech-spe:working4 /bin/bash
+
+
+
+docker run -e LANG=C.UTF-8 -e LC_ALL=C.UTF-8 -it --device /dev/snd -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native -v ~/.config/pulse/cookie:/root/.config/pulse/cookie -p 8000:8000 akshaymg99/speech-spe:working5 
