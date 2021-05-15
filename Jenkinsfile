@@ -16,21 +16,6 @@ pipeline{
             }
         }
 	
-	stage('Testing') {
-	    environment {
-                  HOME="/SPE_Speech_Evaluator"
-            }
-	    steps{
-		sh 'pwd'
-		dir("/SPE_Speech_Evaluator") {
-			sh "ls -l"
-			sh "pwd"
-			sh "python3 manage.py test"
-		}
-				
-	    }
-	}
-
 	stage('DockerHub Push'){
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
