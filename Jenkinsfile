@@ -1,10 +1,5 @@
 pipeline{
-    agent {
-	docker {
-	     image 'akshaymg99/speech-spe:latest'
-	     args '-v $HOME:/SPE_Speech_Evaluator'
-	  }
-    }
+    agent any
     
     stages{
 
@@ -22,7 +17,11 @@ pipeline{
         }
 	
 	stage('Testing') {
+	    environment {
+                  HOME="/SPE_Speech_Evaluator"
+            }
 	    steps{
+		sh 'pwd'
                 sh 'cd /SPE_Speech_Evaluator'
 		sh 'ls -l'
 		sh 'pwd'
