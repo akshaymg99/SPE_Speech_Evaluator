@@ -19,6 +19,7 @@ pipeline{
 	stage('Testing') {
 	    steps{
 		sh 'ls -l'
+		sh 'pwd'
 		sh 'python3 manage.py test'		
 	    }
 
