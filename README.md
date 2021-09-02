@@ -1,5 +1,7 @@
 ## SPE_Speech_Evaluator using DevOps CI/CD Pipeline
 
+Developed as part of SPE course team project
+
 A Django web application which analyzes spoken English for basic interview questions and provides 
 feedback based on syntax analysis (grammatical correctness), vocabulary-strength of the user, which 
 will also indicate the relevance of the answer relative to question asked. In effect it acts like a 
